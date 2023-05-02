@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #F5F5F5;
+        }
+        tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+        .invoice-header {
+            margin-bottom: 20px;
+        }
+        .invoice-header h1 {
+            margin-top: 0;
+            font-size: 36px;
+        }
+        .invoice-details {
+            margin-bottom: 20px;
+        }
+        .invoice-details p {
+            margin: 0;
+            font-size: 16px;
+        }
+        .product-table {
+            margin-bottom: 20px;
+        }
+        .product-table th {
+            font-size: 16px;
+            font-weight: normal;
+        }
+        .product-table td {
+            font-size: 14px;
+        }
+        .total-table {
+            margin-top: 20px;
+        }
+        .total-table td {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-header">
+        <h1>Invoice</h1>
+    </div>
+    <div class="invoice-details">
+        <p>Invoice Number: {{ form.invoice_number }}</p>
+        <p>Invoice Date: {{ form.invoice_date }}</p>
+    </div>
+    <table class="seller-buyer">
+        <tr>
+            <th colspan="2">Seller</th>
+            <th colspan="2">Buyer</th>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td>{{ form.seller_name }}</td>
+            <td>Name:</td>
+            <td>{{ form.buyer_name }}</td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td>{{ form.seller_phone }}</td>
+            <td>Phone:</td>
+            <td>{{ form.buyer_phone }}</td>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td>{{ form.seller_address }}</td>
+            <td>Address:</td>
+            <td>{{ form.buyer_address }}</td>
+        </tr>
+    </table>
+    <table class="product-table">
+        <tr>
+            <th>Sno</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+        </tr>
+        <!-- {% for product in products %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ product.product }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.amount }}</td>
+        </tr>
+        {% endfor %} -->
+        <td>1</td>
+        <td>{{form.product}}</td>
+        <td>{{form.quantity}}</td>
+        <td>{{form.amount}}</td>
+    </table>
+    <table class="total-table">
+        <tr>
+            <td colspan="3">Grand Total:</td>
+            <td>{{ InvoiceForm.calculate_total}}</td>
+        </tr>
+    </table>
